@@ -9,10 +9,10 @@ import IconButton from '@mui/material/IconButton'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 
-const CustomerCard = ({name, lastName, email, avatar}) => {
+const CustomerCard = ({name, lastName, email, avatar, className}) => {
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345}} className = {className}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" src = {avatar}>
