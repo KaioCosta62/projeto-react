@@ -12,8 +12,8 @@ import Customers from './pages/Customers'
 
 function App() {
   return (
-    <TemplateDefault>
       <Router>
+        <TemplateDefault>
         <Switch>
           <Router path='/customers'>
             <TemplatePage title = "Clientes" Component = {Customers}/>
@@ -22,8 +22,8 @@ function App() {
             <TemplatePage title = "Página Inicial" Component = {Home}/>
           </Route>
         </Switch>
+        </TemplateDefault> 
       </Router>
-    </TemplateDefault> 
   )
 }
 

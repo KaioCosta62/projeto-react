@@ -1,24 +1,43 @@
-import React from 'react'
-
+import React, {useState} from 'react'
 import {
   AppBar,
   Toolbar,
   Typography,
   Button,
-  IconButton
-} from '@mui/material';
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material'
 
-import Box from '@mui/material/Box';
-import MenuIcon from '@mui/icons-material/Menu';
-
-import useStyles from './Header.style';
+import {useHistory} from 'react-router-dom'
+ 
+import MenuIcon from '@mui/icons-material/Menu'
+import AddHomeIcon from '@mui/icons-material/AddHome'
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import useStyles from './Header.style'
 
 
 const Header = () => {
   const classes = useStyles()
+  const history = useHistory()
 
+  console.log(history)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleToggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
+  const handleMenuClick = (route) => {
+    handleToggleMenu()
+    history.push(route)
+  }
   return (
-    <AppBar position="static">
+    <>
+      <AppBar position="static">
       <Toolbar>
         <IconButton
           size="large"
@@ -26,6 +45,7 @@ const Header = () => {
           color="inherit"
           aria-label="menu"
           sx={{ mr: 2 }}
+          onClick = {() =>  handleToggleMenu()}
         >
           <MenuIcon />
         </IconButton>
@@ -35,6 +55,24 @@ const Header = () => {
         <Button color="inherit">Login</Button>
       </Toolbar>
     </AppBar>
+    <Drawer open = {menuOpen} onClose = {() => handleToggleMenu()}>
+      <List>
+        <ListItem button onClick = {() => handleMenuClick('/')}>
+          <ListItemIcon>
+            <AddHomeIcon/>
+          </ListItemIcon>
+          <ListItemText>Home</ListItemText>
+        </ListItem>
+        <ListItem button  onClick = {() => handleMenuClick('/customers')}>
+          <ListItemIcon>
+            <PersonAddAltIcon/>
+          </ListItemIcon>
+          <ListItemText>Cadastro de Clientes</ListItemText>
+        </ListItem>
+      </List>
+    </Drawer>
+    </>
+    
   )
 }
 
