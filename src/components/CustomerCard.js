@@ -11,15 +11,16 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import ModalConfirm from './ModalConfirm'
 
-const CustomerCard = ({name, lastName, email, avatar, className}) => {
+const CustomerCard = ({id,name, lastName, email, avatar, className, onRemoveCustomer}) => {
   const [openModal, setOpenModal] = useState(false)
 
   const handleToggleOpenModal = () => {
     setOpenModal(!openModal)
   }
 
-  const handleModal = () => {
-    alert("Ok")
+  const handleConfirmModal = (id) => {
+    handleToggleOpenModal(!openModal)
+    onRemoveCustomer(id)
   }
 
   const handleRemoveCustomer = () => {
@@ -49,7 +50,7 @@ const CustomerCard = ({name, lastName, email, avatar, className}) => {
       <ModalConfirm
         open = {openModal}
         onClose = {handleToggleOpenModal}
-        onConfirm = {handleModal}
+        onConfirm = { () => handleConfirmModal(id)}
         title = 'Deseja realmente excluir esse cadastro?'
         message = 'Ao confirmar não será possível reverter essa operação'
       />
