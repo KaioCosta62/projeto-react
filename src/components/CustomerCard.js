@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import ModalConfirm from './ModalConfirm'
 
-const CustomerCard = ({id,name, lastName, email, avatar, className, onRemoveCustomer}) => {
+const CustomerCard = ({id,name, lastName, email, avatar, className, onRemoveCustomer, onEditCustomer}) => {
   const [openModal, setOpenModal] = useState(false)
 
   const handleToggleOpenModal = () => {
@@ -26,6 +26,10 @@ const CustomerCard = ({id,name, lastName, email, avatar, className, onRemoveCust
   const handleRemoveCustomer = () => {
     handleToggleOpenModal()
   }
+
+  const handleEditCustomer = (id) => {
+    onEditCustomer(id)
+  }
   return (
     <>
       <Card sx={{ maxWidth: 345}} className = {className}>
@@ -39,7 +43,7 @@ const CustomerCard = ({id,name, lastName, email, avatar, className, onRemoveCust
           subheader= {email}
         />
         <CardActions disableSpacing>
-          <IconButton aria-label="Editar cadastro">
+          <IconButton aria-label="Editar cadastro" onClick = {() => handleEditCustomer(id)}>
             <EditIcon />
           </IconButton>
           <IconButton aria-label="Deletar cadastro">

@@ -6,12 +6,16 @@ import TemplatePage from './templates/Page';
 import Home from './pages/Home';
 import CustomersList from './pages/customers/List';
 import CustomersRegister from './pages/customers/Register'
+import CustomerEdit from './pages/customers/Edit'
 
 function App() {
   return (
     <Router>
       <TemplateDefault>
         <Switch>
+          <Router path="/customers/edit/:id">
+            <TemplatePage title="Editar cliente" Component={CustomerEdit} />
+          </Router>
           <Router path="/customers/add">
             <TemplatePage title="Cadastro de Clientes" Component={CustomersRegister} />
           </Router>
