@@ -4,6 +4,8 @@ import {makeStyles} from '@mui/styles'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
+import Toasty from '../../components/Toasty'
+
 const useStyles = makeStyles(theme => ({
   wrapper: {
     margin: theme.spacing(3)
@@ -23,6 +25,8 @@ const Register = () => {
       error: false
     }
   })
+
+  const [openToasty, setOpenToasty] = useState(false)
 
   const handleInputChange = (e) => {
     const {name, value} = e.target
@@ -65,7 +69,7 @@ const Register = () => {
     name: form.name.value,
     job: form.job.value
    }).then(response => {
-    alert("Cliente cadastrado com sucesso!")
+    setOpenToasty(true)
    })
   }
   return(
@@ -93,6 +97,12 @@ const Register = () => {
       <div  className = {classes.wrapper}>
         <Button variant = 'contained' onClick={handleRegisterButton}>Cadastrar</Button>
       </div>
+      <Toasty
+        open={openToasty}
+        severity = 'success'
+        message = 'Cliente cadastrado com sucesso'
+        onClose = {() => setOpenToasty(false)}
+      />
     </>
   )
 }
