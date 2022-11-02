@@ -13,15 +13,15 @@ function App() {
     <Router>
       <TemplateDefault>
         <Switch>
-          <Router path="/customers/edit/:id">
+          <Route path="/customers/edit/:id">
             <TemplatePage title="Editar cliente" Component={CustomerEdit} />
-          </Router>
-          <Router path="/customers/add">
+          </Route>
+          <Route path="/customers/add">
             <TemplatePage title="Cadastro de Clientes" Component={CustomersRegister} />
-          </Router>
-          <Router path="/customers">
+          </Route>
+          <Route path="/customers">
             <TemplatePage title="Listagem de Clientes" Component={CustomersList} />
-          </Router>
+          </Route>
           <Route path="/">
             <TemplatePage title="Página Inicial" Component={Home} />
           </Route>
