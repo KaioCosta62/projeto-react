@@ -10,14 +10,18 @@ import CustomersRegister from './pages/customers/Register'
 import CustomerEdit from './pages/customers/Edit'
 import Login from './pages/Login'
 
+
 function App() {
   return (
-    <Router>
+      <Router>
+        <TemplateDefault>
+
         <Switch>
+        
           <Route path="/login">
             <TemplateClean Component={Login} />
           </Route>
-        <TemplateDefault>
+       
           <Route path="/customers/edit/:id">
             <TemplatePage title="Editar cliente" Component={CustomerEdit} />
           </Route>
@@ -28,10 +32,10 @@ function App() {
             <TemplatePage title="Listagem de Clientes" Component={CustomersList} />
           </Route>
           <Route path="/">
-            <TemplatePage title="Página Inicial" Component={Home} />
+            <TemplatePage title="Página Inicial" Component={Home} /> 
           </Route>
-        </TemplateDefault>
         </Switch>
+        </TemplateDefault>
     </Router>
   )
 }

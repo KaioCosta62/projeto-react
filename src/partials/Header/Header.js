@@ -20,7 +20,7 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import useStyles from './Header.style'
 
 
-const Header = () => {
+const Header = ({user}) => {
   const classes = useStyles()
   const history = useHistory()
 
@@ -52,7 +52,10 @@ const Header = () => {
         <Typography className = {classes.title} variant="h6" component="div" sx={{ flexGrow: 1 }}>
           MyApp
         </Typography>
-        <Button color="inherit">Login</Button>
+        {
+          user.logged ? `${user.email}` : <Button color="inherit">Login</Button>
+        }
+        
       </Toolbar>
     </AppBar>
     <Drawer open = {menuOpen} onClose = {() => handleToggleMenu()}>

@@ -7,6 +7,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import {deepPurple, red} from '@material-ui/core/colors';
 
+import {AuthProvider} from './state/auth'
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,7 +25,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 )
